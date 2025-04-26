@@ -12,8 +12,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 public class OfflineActivity extends AppCompatActivity {
-    private final Button settingsButton = findViewById(R.id.settings);
-    private final Button backButton = findViewById(R.id.getBackOfflineButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +24,9 @@ public class OfflineActivity extends AppCompatActivity {
             return insets;
         });
 
+        Button backButton = findViewById(R.id.getBackOfflineButton);
+        Button settingsButton = findViewById(R.id.settings);
+
         backButton.setOnClickListener(view -> {
             Intent intention = new Intent(OfflineActivity.this, MainActivity.class);
             startActivity(intention);
@@ -34,6 +35,7 @@ public class OfflineActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(view -> {
             PaletteFragment pf = new PaletteFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.addToBackStack(null);
             ft.replace(R.id.frameLayout, pf);
             ft.commit();
         });

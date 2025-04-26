@@ -2,7 +2,6 @@ package com.example.aninterface;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -12,8 +11,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private final Button buttonOffline = findViewById(R.id.offlineButton);
-    private final Button buttonOnline = findViewById(R.id.onlineButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Button buttonOnline = findViewById(R.id.onlineButton);
+        Button buttonOffline = findViewById(R.id.offlineButton);
+
 
         buttonOffline.setOnClickListener(view -> {
             Intent intention = new Intent(MainActivity.this, OfflineActivity.class);

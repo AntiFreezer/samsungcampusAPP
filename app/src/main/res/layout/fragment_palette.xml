@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaletteFragment">
+    tools:context=".PaletteFragment"
+    android:id="@+id/fragment_palette">
 
 
     <LinearLayout
+        android:id="@+id/fragment_palette_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/getOutFragment"
+            android:id="@+id/getOutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
