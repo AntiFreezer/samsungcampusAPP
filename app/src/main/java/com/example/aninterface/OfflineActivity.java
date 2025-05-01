@@ -1,16 +1,13 @@
 package com.example.aninterface;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentTransaction;
 
 public class OfflineActivity extends AppCompatActivity {
     @Override
@@ -24,9 +21,8 @@ public class OfflineActivity extends AppCompatActivity {
             return insets;
         });
 
-
         Button backButton = findViewById(R.id.getBackOfflineButton);
-        Button settingsButton = findViewById(R.id.settings);
+        Button settingsButton = findViewById(R.id.button_brush_size);
 
         backButton.setOnClickListener(view -> {
             Intent intention = new Intent(OfflineActivity.this, MainActivity.class);
@@ -34,11 +30,7 @@ public class OfflineActivity extends AppCompatActivity {
         });
 
         settingsButton.setOnClickListener(view -> {
-            PaletteFragment pf = new PaletteFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.addToBackStack(null)
-            .replace(R.id.frameLayout, pf)
-            .commit();
+
         });
     }
 }
