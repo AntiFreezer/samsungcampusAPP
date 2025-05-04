@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_shape_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_shape"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Линия" />
+
+        <Button
+            android:id="@+id/button_square"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Квадрат" />
+
+        <Button
+            android:id="@+id/button_circle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Круг" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

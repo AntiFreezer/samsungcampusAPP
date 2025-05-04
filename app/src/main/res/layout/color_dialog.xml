@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_color_dialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Свой цвет(hex)"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/button_confirm_own_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Подтвердить" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_set_color_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Красный" />
+
+        <Button
+            android:id="@+id/button_set_color_yellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Желтый" />
+
+        <Button
+            android:id="@+id/button_set_color_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Зеленый" />
+
+        <Button
+            android:id="@+id/button_set_color_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Синий" />
+
+        <Button
+            android:id="@+id/button_set_color_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Черный" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
