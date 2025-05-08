@@ -37,27 +37,41 @@ public class DrawingThread extends Thread{
 
     //SETTERS
     public void setCurrentColor(int currentColor){
+        synchronized (this){
         this.currentColor = currentColor;
+        }
     }
     public void setCurrentShape(String currentShape) {
-        this.currentShape = currentShape;
+        synchronized (this) {
+            this.currentShape = currentShape;
+        }
     }
     public void setCurrentWidth(int currentWidth){
-        this.currentWidth = currentWidth;
+        synchronized (this) {
+            this.currentWidth = currentWidth;
+        }
     }
     public void setCurrentFog(boolean currentFog){
-        this.currentFog = currentFog;
+        synchronized (this) {
+            this.currentFog = currentFog;
+        }
     }
     public void setStopRequest(){
-        running = false;
+        synchronized (this) {
+            running = false;
+        }
     }
     public void setPoints(float x, float y){
-        this.x = x;
-        this.y = y;
+        synchronized (this){
+            this.x = x;
+            this.y = y;
+        }
     }
     public void setPointsMove(float xM, float yM){
-        this.xM = xM;
-        this.yM = yM;
+        synchronized (this) {
+            this.xM = xM;
+            this.yM = yM;
+        }
     }
     //GETTERS
     public String getCurrentShape(){
