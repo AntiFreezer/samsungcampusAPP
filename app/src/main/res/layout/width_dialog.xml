@@ -14,6 +14,7 @@
         android:id="@+id/seekBar_width_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:min="1"
         android:max="10"
         android:progress="1" />
 

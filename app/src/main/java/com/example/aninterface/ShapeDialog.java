@@ -5,7 +5,7 @@ import android.content.Context;
 import android.widget.Button;
 
 public class ShapeDialog extends Dialog {
-    public ShapeDialog(Context context){
+    public ShapeDialog(Context context, Drawing drawing){
         super(context);
 
         setContentView(R.layout.shape_dialog);
@@ -15,14 +15,17 @@ public class ShapeDialog extends Dialog {
         Button buttonCircle = findViewById(R.id.button_circle);
 
         buttonLine.setOnClickListener(view -> {
+            drawing.getDrawingThread().setCurrentShape("LINE");
             dismiss();
         });
 
         buttonSquare.setOnClickListener(view -> {
+            drawing.getDrawingThread().setCurrentShape("SQUARE");
             dismiss();
         });
 
         buttonCircle.setOnClickListener(view -> {
+            drawing.getDrawingThread().setCurrentShape("CIRCLE");
             dismiss();
         });
     }
