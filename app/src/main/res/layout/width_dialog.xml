@@ -5,21 +5,20 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ширина кисти" />
 
     <SeekBar
-        android:id="@+id/seekBar_width_dialog"
+        android:id="@+id/seekBar_width_dialog_offline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:min="1"
-        android:max="10"
-        android:progress="1" />
+        android:min="30"
+        android:max="150"
+        android:progress="10" />
 
     <Button
-        android:id="@+id/button_confirm_width_dialog"
+        android:id="@+id/button_confirm_width_dialog_offline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Подтвердить" />

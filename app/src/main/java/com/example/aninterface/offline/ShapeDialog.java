@@ -1,8 +1,10 @@
-package com.example.aninterface;
+package com.example.aninterface.offline;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.widget.Button;
+
+import com.example.aninterface.R;
 
 public class ShapeDialog extends Dialog {
     public ShapeDialog(Context context, Drawing drawing){
@@ -10,9 +12,9 @@ public class ShapeDialog extends Dialog {
 
         setContentView(R.layout.shape_dialog);
 
-        Button buttonLine = findViewById(R.id.button_line);
-        Button buttonSquare = findViewById(R.id.button_square);
-        Button buttonCircle = findViewById(R.id.button_circle);
+        Button buttonLine = findViewById(R.id.button_line_offline);
+        Button buttonSquare = findViewById(R.id.button_square_offline);
+        Button buttonCircle = findViewById(R.id.button_circle_offline);
 
         buttonLine.setOnClickListener(view -> {
             drawing.getDrawingThread().setCurrentShape("LINE");

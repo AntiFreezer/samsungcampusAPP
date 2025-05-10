@@ -1,7 +1,8 @@
-package com.example.aninterface;
+package com.example.aninterface.offline;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -9,19 +10,25 @@ import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 
+import java.util.Objects;
+
 public class Drawing extends SurfaceView {
     SurfaceHolder surfaceHolder;
     private DrawingThread drawingThread;
+    Points points;
+    Path path;
 
     public Drawing(Context context){
         super(context);
         surfaceHolder = getHolder();
-        drawingThread = new DrawingThread(surfaceHolder);
+        points = new Points();
+        drawingThread = new DrawingThread(surfaceHolder, points);
         init();
     }
 
     public Drawing(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
+        points = new Points();
         init();
     }
     public DrawingThread getDrawingThread(){
@@ -32,7 +39,7 @@ public class Drawing extends SurfaceView {
         getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
-                drawingThread = new DrawingThread(holder);
+                drawingThread = new DrawingThread(holder, points);
                 drawingThread.start();
             }
 
@@ -43,7 +50,7 @@ public class Drawing extends SurfaceView {
 
             @Override
             public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-                drawingThread = new DrawingThread(holder);
+                drawingThread = new DrawingThread(holder, points);
                 drawingThread.setStopRequest();
                 boolean retry = true;
                 while (retry) {
@@ -61,13 +68,26 @@ public class Drawing extends SurfaceView {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                drawingThread.setPoints(event.getX(), event.getY());
-            case MotionEvent.ACTION_MOVE:
-                drawingThread.setPointsMove(event.getX(), event.getY());
+        if(Objects.equals(drawingThread.getCurrentShape(), "LINE")){
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    path = new Path();
+                    path.moveTo(event.getX(), event.getY());
+                    points.addPath(path);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    if(!points.getPaths().isEmpty()){
+                        path = points.getPaths().get(points.getPaths().size() - 1);
+                        path.lineTo(event.getX(), event.getY());
+                    }
+                    break;
+            }
         }
-        invalidate();
+        else{
+            if(MotionEvent.ACTION_DOWN == event.getAction()){
+                points.addPoints(event.getX(), event.getY());
+            }
+        }
         return true;
     }
 }

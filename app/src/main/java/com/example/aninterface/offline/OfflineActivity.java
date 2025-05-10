@@ -1,4 +1,4 @@
-package com.example.aninterface;
+package com.example.aninterface.offline;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.aninterface.MainActivity;
+import com.example.aninterface.R;
 
 public class OfflineActivity extends AppCompatActivity {
     Button backButton;
@@ -23,13 +26,13 @@ public class OfflineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.offline_activity);
 
-        drawingView = findViewById(R.id.drawingView);
+        drawingView = findViewById(R.id.drawingViewOffline);
 
         backButton = findViewById(R.id.getBackOfflineButton);
-        colorButton = findViewById(R.id.button_color);
-        widthButton = findViewById(R.id.button_width);
-        fogButton = findViewById(R.id.button_fog);
-        shapeButton = findViewById(R.id.button_shape);
+        colorButton = findViewById(R.id.button_color_offline);
+        widthButton = findViewById(R.id.button_width_offline);
+        fogButton = findViewById(R.id.button_fog_offline);
+        shapeButton = findViewById(R.id.button_shape_offline);
 
 
 

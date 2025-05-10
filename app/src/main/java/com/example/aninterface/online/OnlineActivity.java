@@ -1,4 +1,4 @@
-package com.example.aninterface;
+package com.example.aninterface.online;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.aninterface.MainActivity;
+import com.example.aninterface.R;
 
 public class OnlineActivity extends AppCompatActivity {
 

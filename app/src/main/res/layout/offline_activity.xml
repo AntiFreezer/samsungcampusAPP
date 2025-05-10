@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OfflineActivity">
+    tools:context=".offline.OfflineActivity">
 
 
     <LinearLayout
@@ -27,14 +27,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button_color"
+                android:id="@+id/button_color_offline"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="Цвет " />
 
             <Button
-                android:id="@+id/button_width"
+                android:id="@+id/button_width_offline"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="10dp"
@@ -43,14 +43,14 @@
                 android:text="Ширина " />
 
             <Button
-                android:id="@+id/button_fog"
+                android:id="@+id/button_fog_offline"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="Туманность" />
 
             <Button
-                android:id="@+id/button_shape"
+                android:id="@+id/button_shape_offline"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
@@ -58,8 +58,8 @@
 
         </LinearLayout>
 
-        <com.example.aninterface.Drawing
-            android:id="@+id/drawingView"
+        <com.example.aninterface.offline.Drawing
+            android:id="@+id/drawingViewOffline"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

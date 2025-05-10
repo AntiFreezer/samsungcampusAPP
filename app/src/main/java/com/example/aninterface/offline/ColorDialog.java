@@ -1,4 +1,4 @@
-package com.example.aninterface;
+package com.example.aninterface.offline;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.aninterface.R;
 
 public class ColorDialog extends Dialog {
     Button buttonConfirm;
@@ -20,13 +22,13 @@ public class ColorDialog extends Dialog {
 
         setContentView(R.layout.color_dialog);
 
-        editTextColor = findViewById(R.id.editTextColor);
-        buttonConfirm = findViewById(R.id.button_confirm_own_color);
-        buttonRed = findViewById(R.id.button_set_color_red);
-        buttonYellow = findViewById(R.id.button_set_color_yellow);
-        buttonGreen = findViewById(R.id.button_set_color_green);
-        buttonBlue = findViewById(R.id.button_set_color_blue);
-        buttonBlack = findViewById(R.id.button_set_color_black);
+        editTextColor = findViewById(R.id.editTextColorOffline);
+        buttonConfirm = findViewById(R.id.button_confirm_own_color_offline);
+        buttonRed = findViewById(R.id.button_set_color_red_offline);
+        buttonYellow = findViewById(R.id.button_set_color_yellow_offline);
+        buttonGreen = findViewById(R.id.button_set_color_green_offline);
+        buttonBlue = findViewById(R.id.button_set_color_blue_offline);
+        buttonBlack = findViewById(R.id.button_set_color_black_offline);
 
         buttonRed.setOnClickListener(view -> {
             drawing.getDrawingThread().setCurrentColor(Color.RED);

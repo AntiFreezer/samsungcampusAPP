@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/layout_color_dialog"
+        android:id="@+id/layout_color_dialog_offline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextColor"
+                android:id="@+id/editTextColorOffline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -29,7 +29,7 @@
                 android:inputType="text" />
 
             <Button
-                android:id="@+id/button_confirm_own_color"
+                android:id="@+id/button_confirm_own_color_offline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Подтвердить" />
@@ -37,31 +37,31 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button_set_color_red"
+            android:id="@+id/button_set_color_red_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Красный" />
 
         <Button
-            android:id="@+id/button_set_color_yellow"
+            android:id="@+id/button_set_color_yellow_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Желтый" />
 
         <Button
-            android:id="@+id/button_set_color_green"
+            android:id="@+id/button_set_color_green_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Зеленый" />
 
         <Button
-            android:id="@+id/button_set_color_blue"
+            android:id="@+id/button_set_color_blue_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Синий" />
 
         <Button
-            android:id="@+id/button_set_color_black"
+            android:id="@+id/button_set_color_black_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Черный" />
