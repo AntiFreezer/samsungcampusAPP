@@ -13,22 +13,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button_line_offline"
+            android:id="@+id/button_line_online"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Линия" />
 
         <Button
-            android:id="@+id/button_square_offline"
+            android:id="@+id/button_square_online"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Квадрат" />
 
         <Button
-            android:id="@+id/button_circle_offline"
+            android:id="@+id/button_circle_online"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Круг" />
+
+        <Button
+            android:id="@+id/button_eraser_online"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ластик" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

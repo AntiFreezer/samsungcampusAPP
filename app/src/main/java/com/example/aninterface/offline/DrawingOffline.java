@@ -12,35 +12,35 @@ import androidx.annotation.NonNull;
 
 import java.util.Objects;
 
-public class Drawing extends SurfaceView {
+public class DrawingOffline extends SurfaceView {
     SurfaceHolder surfaceHolder;
-    private DrawingThread drawingThread;
-    Points points;
+    private DrawingThreadOffline drawingThreadOffline;
+    PointsOffline points;
     Path path;
 
-    public Drawing(Context context){
+    public DrawingOffline(Context context){
         super(context);
         surfaceHolder = getHolder();
-        points = new Points();
-        drawingThread = new DrawingThread(surfaceHolder, points);
+        points = new PointsOffline();
+        drawingThreadOffline = new DrawingThreadOffline(surfaceHolder, points);
         init();
     }
 
-    public Drawing(Context context, AttributeSet attributeSet){
+    public DrawingOffline(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
-        points = new Points();
+        points = new PointsOffline();
         init();
     }
-    public DrawingThread getDrawingThread(){
-        return drawingThread;
+    public DrawingThreadOffline getDrawingThread(){
+        return drawingThreadOffline;
     }
 
     public void init(){
         getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
-                drawingThread = new DrawingThread(holder, points);
-                drawingThread.start();
+                drawingThreadOffline = new DrawingThreadOffline(holder, points);
+                drawingThreadOffline.start();
             }
 
             @Override
@@ -50,12 +50,12 @@ public class Drawing extends SurfaceView {
 
             @Override
             public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-                drawingThread = new DrawingThread(holder, points);
-                drawingThread.setStopRequest();
+                drawingThreadOffline = new DrawingThreadOffline(holder, points);
+                drawingThreadOffline.setStopRequest();
                 boolean retry = true;
                 while (retry) {
                     try {
-                        drawingThread.join();
+                        drawingThreadOffline.join();
                         retry = false;
                     } catch (InterruptedException e) {
                         throw new RuntimeException();
@@ -68,12 +68,12 @@ public class Drawing extends SurfaceView {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(Objects.equals(drawingThread.getCurrentShape(), "LINE")){
+        if(Objects.equals(drawingThreadOffline.getCurrentShape(), "LINE") || Objects.equals(drawingThreadOffline.getCurrentShape(), "ERASER")){
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     path = new Path();
                     path.moveTo(event.getX(), event.getY());
-                    points.addPath(path);
+                    points.addPath(path, drawingThreadOffline.getCurrentColor(), drawingThreadOffline.getCurrentWidth(), drawingThreadOffline.getCurrentFog(), drawingThreadOffline.getCurrentShape());
                     break;
                 case MotionEvent.ACTION_MOVE:
                     if(!points.getPaths().isEmpty()){
@@ -85,7 +85,7 @@ public class Drawing extends SurfaceView {
         }
         else{
             if(MotionEvent.ACTION_DOWN == event.getAction()){
-                points.addPoints(event.getX(), event.getY());
+                points.addPoints(event.getX(), event.getY(), drawingThreadOffline.getCurrentColor(), drawingThreadOffline.getCurrentWidth(), drawingThreadOffline.getCurrentFog(), drawingThreadOffline.getCurrentShape());
             }
         }
         return true;

@@ -18,7 +18,7 @@ public class OfflineActivity extends AppCompatActivity {
     Button widthButton;
     Button fogButton;
     Button shapeButton;
-    Drawing drawingView;
+    DrawingOffline drawingOfflineView;
 
 
     @Override
@@ -26,34 +26,34 @@ public class OfflineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.offline_activity);
 
-        drawingView = findViewById(R.id.drawingViewOffline);
+        drawingOfflineView = findViewById(R.id.drawingViewOnline);
 
-        backButton = findViewById(R.id.getBackOfflineButton);
-        colorButton = findViewById(R.id.button_color_offline);
-        widthButton = findViewById(R.id.button_width_offline);
-        fogButton = findViewById(R.id.button_fog_offline);
-        shapeButton = findViewById(R.id.button_shape_offline);
+        backButton = findViewById(R.id.getBackOnlineButton);
+        colorButton = findViewById(R.id.button_color_online);
+        widthButton = findViewById(R.id.button_width_online);
+        fogButton = findViewById(R.id.button_fog_online);
+        shapeButton = findViewById(R.id.button_shape_online);
 
 
 
         colorButton.setOnClickListener(view -> {
-            ColorDialog colorDialog = new ColorDialog(this, drawingView);
+            ColorDialogOffline colorDialog = new ColorDialogOffline(this, drawingOfflineView);
             colorDialog.show();
         });
 
         widthButton.setOnClickListener(view -> {
-            WidthDialog widthDialog = new WidthDialog(this, drawingView);
-            widthDialog.show();
+            WidthDialogOffline widthDialogOffline = new WidthDialogOffline(this, drawingOfflineView);
+            widthDialogOffline.show();
         });
 
         fogButton.setOnClickListener(view -> {
-            FogDialog fogDialog = new FogDialog(this, drawingView);
-            fogDialog.show();
+            FogDialogOffline fogDialogOffline = new FogDialogOffline(this, drawingOfflineView);
+            fogDialogOffline.show();
         });
 
         shapeButton.setOnClickListener(view -> {
-            ShapeDialog shapeDialog = new ShapeDialog(this, drawingView);
-            shapeDialog.show();
+            ShapeDialogOffline shapeDialogOffline = new ShapeDialogOffline(this, drawingOfflineView);
+            shapeDialogOffline.show();
         });
 
         backButton.setOnClickListener(view -> {
