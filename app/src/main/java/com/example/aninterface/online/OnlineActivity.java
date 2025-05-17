@@ -1,9 +1,8 @@
 package com.example.aninterface.online;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.aninterface.MainActivity;
 import com.example.aninterface.R;
-import com.example.aninterface.offline.ColorDialogOffline;
-import com.example.aninterface.offline.DrawingOffline;
-import com.example.aninterface.offline.FogDialogOffline;
-import com.example.aninterface.offline.ShapeDialogOffline;
-import com.example.aninterface.offline.WidthDialogOffline;
+
 
 public class OnlineActivity extends AppCompatActivity {
 

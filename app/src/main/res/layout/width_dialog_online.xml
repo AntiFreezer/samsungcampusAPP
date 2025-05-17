@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ширина кисти" />
+
+    <SeekBar
+        android:id="@+id/seekBar_width_dialog_online"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:min="30"
+        android:max="150"
+        android:progress="10" />
+
+    <Button
+        android:id="@+id/button_confirm_width_dialog_online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Подтвердить" />
+</LinearLayout>
