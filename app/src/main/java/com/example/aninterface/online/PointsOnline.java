@@ -12,26 +12,27 @@ public class PointsOnline {
     private final List<Integer> pathColors;
     private final List<Integer> pathWidths;
     private final List<Boolean> pathFogs;
-    private final List<String> pathTypes;
     //shapes
     private final List<float[]> points;
     private final List<Integer> shapeColors;
     private final List<Integer> shapeWidths;
     private final List<Boolean> shapeFogs;
     private final List<String> shapeTypes;
+    private List<DrawingItemOnline> drawingItems;
     public PointsOnline() {
         //paths
         paths = Collections.synchronizedList(new ArrayList<>());
         pathColors = Collections.synchronizedList(new ArrayList<>());
         pathWidths = Collections.synchronizedList(new ArrayList<>());
         pathFogs = Collections.synchronizedList(new ArrayList<>());
-        pathTypes = Collections.synchronizedList(new ArrayList<>());
         //shapes
         points = Collections.synchronizedList(new ArrayList<>());
         shapeColors = Collections.synchronizedList(new ArrayList<>());
         shapeWidths = Collections.synchronizedList(new ArrayList<>());
         shapeFogs = Collections.synchronizedList(new ArrayList<>());
         shapeTypes = new ArrayList<>();
+        //Easter egg
+        drawingItems = new ArrayList<>();
     }
     public void clear() {
         //paths
@@ -46,60 +47,18 @@ public class PointsOnline {
         shapeWidths.clear();
         shapeTypes.clear();
     }
-    //squares, circles
-    public synchronized void addPoints(float x, float y, int color, int width, boolean fog, String shapeType) {
-        points.add(new float[] {x, y});
-        shapeColors.add(color);
-        shapeWidths.add(width);
-        shapeFogs.add(fog);
-        shapeTypes.add(shapeType);
+    //shapes
+    public void addShape(float[] point, String type, int color, int width, boolean fog) {
+        drawingItems.add(new DrawingItemOnline (point[0], point[1], type, color, width, fog));
     }
-    public List<float[]> getPoints() {
-        return points;
-    }
-
-    public List<Integer> getShapeColors() {
-        return shapeColors;
-    }
-
-    public List<Boolean> getShapeFogs() {
-        return shapeFogs;
-    }
-
-    public List<Integer> getShapeWidths() {
-        return shapeWidths;
-    }
-
-    public List<String> getShapeTypes() {
-        return shapeTypes;
-    }
-
     //paths
-    public synchronized void addPath(Path path, int color, int width, boolean fog, String pathType) {
-        paths.add(path);
-        pathColors.add(color);
-        pathWidths.add(width);
-        pathFogs.add(fog);
-        pathTypes.add(pathType);
+
+    public void addPath(Path path, int color, int width, boolean fog) {
+        drawingItems.add(new DrawingItemOnline(path, color, width, fog));
+    }
+    //One more egg??
+    public List<DrawingItemOnline> getAllItems() {
+        return new ArrayList<>(drawingItems);
     }
 
-    public List<Path> getPaths() {
-        return paths;
-    }
-
-    public List<Integer> getPathColors() {
-        return pathColors;
-    }
-
-    public List<Integer> getPathWidths() {
-        return pathWidths;
-    }
-
-    public List<Boolean> getPathFogs() {
-        return pathFogs;
-    }
-
-    public List<String> getPathTypes() {
-        return pathTypes;
-    }
 }

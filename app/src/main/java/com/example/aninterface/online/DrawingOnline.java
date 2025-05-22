@@ -79,19 +79,29 @@ public class DrawingOnline extends SurfaceView {
                 case MotionEvent.ACTION_DOWN:
                     path = new Path();
                     path.moveTo(event.getX(), event.getY());
-                    points.addPath(path, drawingThreadOnline.getCurrentColor(), drawingThreadOnline.getCurrentWidth(), drawingThreadOnline.getCurrentFog(), drawingThreadOnline.getCurrentShape());
+                    switch (drawingThreadOnline.getCurrentShape()){
+                        case "LINE":
+                            points.addPath(path, drawingThreadOnline.getCurrentColor(), drawingThreadOnline.getCurrentWidth(), drawingThreadOnline.getCurrentFog());
+                            break;
+                        case "ERASER":
+                            points.addPath(path, Color.BLACK, drawingThreadOnline.getCurrentWidth(), false);
+                            break;
+                    }
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    if(!points.getPaths().isEmpty()){
-                        path = points.getPaths().get(points.getPaths().size() - 1);
+                    if(path != null){
                         path.lineTo(event.getX(), event.getY());
+                        invalidate(); // Redrwaing
                     }
+                    break;
+                case MotionEvent.ACTION_UP:
+                    path = null; // Reset previous path(current)
                     break;
             }
         }
         else{
             if(MotionEvent.ACTION_DOWN == event.getAction()){
-                points.addPoints(event.getX(), event.getY(), drawingThreadOnline.getCurrentColor(), drawingThreadOnline.getCurrentWidth(), drawingThreadOnline.getCurrentFog(), drawingThreadOnline.getCurrentShape());
+                points.addShape(new float[]{event.getX(), event.getY()},drawingThreadOnline.getCurrentShape(), drawingThreadOnline.getCurrentColor(), drawingThreadOnline.getCurrentWidth(), drawingThreadOnline.getCurrentFog());
             }
         }
         return true;
