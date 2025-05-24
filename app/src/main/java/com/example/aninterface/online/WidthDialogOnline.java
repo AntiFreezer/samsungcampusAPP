@@ -9,7 +9,7 @@ import com.example.aninterface.R;
 
 public class WidthDialogOnline extends Dialog {
     public WidthDialogOnline(Context context, DrawingOnline drawingOnline) {
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.width_dialog_online);
 

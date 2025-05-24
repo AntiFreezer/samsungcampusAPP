@@ -10,7 +10,7 @@ import com.example.aninterface.R;
 
 public class FogDialogOnline extends Dialog {
     public FogDialogOnline(Context context, DrawingOnline drawingOnline) {
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.fog_dialog_online);
 

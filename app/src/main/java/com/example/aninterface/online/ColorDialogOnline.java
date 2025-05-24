@@ -19,7 +19,7 @@ public class ColorDialogOnline extends Dialog {
     EditText editTextColor;
 
     public ColorDialogOnline(Context context, DrawingOnline drawingOnline) {
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.color_dialog_online);
 

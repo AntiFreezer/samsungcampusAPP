@@ -2,7 +2,10 @@ package com.example.aninterface.offline;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,9 +22,17 @@ public class ColorDialogOffline extends Dialog {
     EditText editTextColor;
     
     public ColorDialogOffline(Context context, DrawingOffline drawingOffline) {
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.color_dialog_offline);
+
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(getContext().getResources().getColor(android.R.color.background_dark)); // Цвет фона
+        background.setCornerRadius(30f); // Установите радиус закругления по вашему усмотрению
+
+        // Установите фон для корневого View диалога
+        View rootView = findViewById(android.R.id.content); // Получаем корневой View
+        rootView.setBackground(background);
 
         editTextColor = findViewById(R.id.editTextColorOnline);
         buttonConfirm = findViewById(R.id.button_confirm_own_color_online);

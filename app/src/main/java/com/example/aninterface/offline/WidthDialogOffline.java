@@ -9,7 +9,7 @@ import com.example.aninterface.R;
 
 public class WidthDialogOffline extends Dialog {
     public WidthDialogOffline(Context context, DrawingOffline drawingOffline) {
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.width_dialog_offline);
 

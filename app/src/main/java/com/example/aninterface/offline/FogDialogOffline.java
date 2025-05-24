@@ -9,7 +9,7 @@ import com.example.aninterface.R;
 
 public class FogDialogOffline extends Dialog {
     public FogDialogOffline(Context context, DrawingOffline drawingOffline) {
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.fog_dialog_offline);
 

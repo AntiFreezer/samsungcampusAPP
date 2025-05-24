@@ -8,7 +8,7 @@ import com.example.aninterface.R;
 
 public class ShapeDialogOnline extends Dialog {
     public ShapeDialogOnline(Context context, DrawingOnline drawingOnline){
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.shape_dialog_online);
 

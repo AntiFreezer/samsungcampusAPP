@@ -8,6 +8,7 @@
     tools:context=".offline.OfflineActivity">
 
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -31,21 +32,26 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="8dp"
                 android:text="Цвет " />
 
             <Button
                 android:id="@+id/button_width_online"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
+
                 android:text="Ширина " />
 
             <Button
                 android:id="@+id/button_fog_online"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:text="Туманность" />
 
@@ -54,6 +60,8 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
                 android:text="Фигура" />
 
         </LinearLayout>

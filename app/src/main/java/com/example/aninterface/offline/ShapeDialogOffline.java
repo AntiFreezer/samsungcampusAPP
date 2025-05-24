@@ -8,7 +8,7 @@ import com.example.aninterface.R;
 
 public class ShapeDialogOffline extends Dialog {
     public ShapeDialogOffline(Context context, DrawingOffline drawingOffline){
-        super(context);
+        super(context, R.style.RoundedDialog);
 
         setContentView(R.layout.shape_dialog_offline);
 
