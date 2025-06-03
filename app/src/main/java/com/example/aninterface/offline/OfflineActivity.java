@@ -1,5 +1,6 @@
 package com.example.aninterface.offline;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -21,18 +22,21 @@ public class OfflineActivity extends AppCompatActivity {
     DrawingOffline drawingOfflineView;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.offline_activity);
 
-        drawingOfflineView = findViewById(R.id.drawingViewOnline);
+        drawingOfflineView = findViewById(R.id.drawingViewOffline);
 
-        backButton = findViewById(R.id.getBackOnlineButton);
-        colorButton = findViewById(R.id.button_color_online);
-        widthButton = findViewById(R.id.button_width_online);
-        fogButton = findViewById(R.id.button_fog_online);
-        shapeButton = findViewById(R.id.button_shape_online);
+        backButton = findViewById(R.id.getBackOfflineButton);
+        colorButton = findViewById(R.id.button_color_offline);
+        widthButton = findViewById(R.id.button_width_offline);
+        fogButton = findViewById(R.id.button_fog_offline);
+        shapeButton = findViewById(R.id.button_shape_offline);
+
+
 
 
 

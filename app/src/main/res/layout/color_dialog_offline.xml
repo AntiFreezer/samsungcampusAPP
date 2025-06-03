@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
 
     <LinearLayout
         android:id="@+id/layout_color_dialog_offline"
@@ -22,7 +23,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextColorOnline"
+                android:id="@+id/editTextColorOffline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -30,7 +31,7 @@
                 android:inputType="text" />
 
             <Button
-                android:id="@+id/button_confirm_own_color_online"
+                android:id="@+id/button_confirm_own_color_offline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Подтвердить" />
@@ -38,31 +39,31 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button_set_color_red_online"
+            android:id="@+id/button_set_color_red_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Красный" />
 
         <Button
-            android:id="@+id/button_set_color_yellow_online"
+            android:id="@+id/button_set_color_yellow_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Желтый" />
 
         <Button
-            android:id="@+id/button_set_color_green_online"
+            android:id="@+id/button_set_color_green_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Зеленый" />
 
         <Button
-            android:id="@+id/button_set_color_blue_online"
+            android:id="@+id/button_set_color_blue_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Синий" />
 
         <Button
-            android:id="@+id/button_set_color_black_online"
+            android:id="@+id/button_set_color_black_offline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Черный" />

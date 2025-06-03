@@ -17,8 +17,7 @@ public class PointsOnline {
     private final List<Integer> shapeColors;
     private final List<Integer> shapeWidths;
     private final List<Boolean> shapeFogs;
-    private final List<String> shapeTypes;
-    private List<DrawingItemOnline> drawingItems;
+    private final List<DrawingItemOnline> drawingItems;
     public PointsOnline() {
         //paths
         paths = Collections.synchronizedList(new ArrayList<>());
@@ -30,7 +29,6 @@ public class PointsOnline {
         shapeColors = Collections.synchronizedList(new ArrayList<>());
         shapeWidths = Collections.synchronizedList(new ArrayList<>());
         shapeFogs = Collections.synchronizedList(new ArrayList<>());
-        shapeTypes = new ArrayList<>();
         //Easter egg
         drawingItems = new ArrayList<>();
     }
@@ -45,20 +43,20 @@ public class PointsOnline {
         shapeColors.clear();
         shapeFogs.clear();
         shapeWidths.clear();
-        shapeTypes.clear();
+        //for egg
+        drawingItems.clear();
     }
     //shapes
-    public void addShape(float[] point, String type, int color, int width, boolean fog) {
-        drawingItems.add(new DrawingItemOnline (point[0], point[1], type, color, width, fog));
-    }
-    //paths
-
-    public void addPath(Path path, int color, int width, boolean fog) {
-        drawingItems.add(new DrawingItemOnline(path, color, width, fog));
+    public void add(int color, boolean fog, String type, int width, float xMoveTo, float yMoveTo, float xLineTo, float yLineTo) {
+        drawingItems.add(new DrawingItemOnline (color, fog, type, width, xMoveTo, yMoveTo, xLineTo, yLineTo));
     }
     //One more egg??
     public List<DrawingItemOnline> getAllItems() {
         return new ArrayList<>(drawingItems);
+    }
+
+    public DrawingItemOnline getItem(){
+        return drawingItems.get(drawingItems.size() - 1);
     }
 
 }

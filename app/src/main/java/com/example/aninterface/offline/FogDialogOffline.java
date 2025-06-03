@@ -1,5 +1,6 @@
 package com.example.aninterface.offline;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.widget.Button;
@@ -13,8 +14,8 @@ public class FogDialogOffline extends Dialog {
 
         setContentView(R.layout.fog_dialog_offline);
 
-        Switch switcher = findViewById(R.id.switch_fog_dialog_online);
-        Button buttonConfirmed = findViewById(R.id.button_confirm_fog_dialog_online);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switcher = findViewById(R.id.switch_fog_dialog_offline);
+        Button buttonConfirmed = findViewById(R.id.button_confirm_fog_dialog_offline);
 
         buttonConfirmed.setOnClickListener(view -> {
             drawingOffline.getDrawingThread().setCurrentFog(switcher.isChecked());

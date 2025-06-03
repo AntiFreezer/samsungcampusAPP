@@ -3,7 +3,6 @@ package com.example.aninterface.offline;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +19,7 @@ public class ColorDialogOffline extends Dialog {
     Button buttonBlue;
     Button buttonBlack;
     EditText editTextColor;
-    
+
     public ColorDialogOffline(Context context, DrawingOffline drawingOffline) {
         super(context, R.style.RoundedDialog);
 
@@ -28,19 +27,18 @@ public class ColorDialogOffline extends Dialog {
 
         GradientDrawable background = new GradientDrawable();
         background.setColor(getContext().getResources().getColor(android.R.color.background_dark)); // Цвет фона
-        background.setCornerRadius(30f); // Установите радиус закругления по вашему усмотрению
+        background.setCornerRadius(30f);
 
-        // Установите фон для корневого View диалога
-        View rootView = findViewById(android.R.id.content); // Получаем корневой View
+        View rootView = findViewById(android.R.id.content);
         rootView.setBackground(background);
 
-        editTextColor = findViewById(R.id.editTextColorOnline);
-        buttonConfirm = findViewById(R.id.button_confirm_own_color_online);
-        buttonRed = findViewById(R.id.button_set_color_red_online);
-        buttonYellow = findViewById(R.id.button_set_color_yellow_online);
-        buttonGreen = findViewById(R.id.button_set_color_green_online);
-        buttonBlue = findViewById(R.id.button_set_color_blue_online);
-        buttonBlack = findViewById(R.id.button_set_color_black_online);
+        editTextColor = findViewById(R.id.editTextColorOffline);
+        buttonConfirm = findViewById(R.id.button_confirm_own_color_offline);
+        buttonRed = findViewById(R.id.button_set_color_red_offline);
+        buttonYellow = findViewById(R.id.button_set_color_yellow_offline);
+        buttonGreen = findViewById(R.id.button_set_color_green_offline);
+        buttonBlue = findViewById(R.id.button_set_color_blue_offline);
+        buttonBlack = findViewById(R.id.button_set_color_black_offline);
 
         buttonRed.setOnClickListener(view -> {
             drawingOffline.getDrawingThread().setCurrentColor(Color.RED);

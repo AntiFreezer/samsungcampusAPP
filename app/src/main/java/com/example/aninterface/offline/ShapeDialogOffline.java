@@ -12,10 +12,10 @@ public class ShapeDialogOffline extends Dialog {
 
         setContentView(R.layout.shape_dialog_offline);
 
-        Button buttonLine = findViewById(R.id.button_line_online);
-        Button buttonSquare = findViewById(R.id.button_square_online);
-        Button buttonCircle = findViewById(R.id.button_circle_online);
-        Button buttonEraser = findViewById(R.id.button_eraser_online);
+        Button buttonLine = findViewById(R.id.button_line_offline);
+        Button buttonSquare = findViewById(R.id.button_square_offline);
+        Button buttonCircle = findViewById(R.id.button_circle_offline);
+        Button buttonEraser = findViewById(R.id.button_eraser_offline);
 
         buttonLine.setOnClickListener(view -> {
             drawingOffline.getDrawingThread().setCurrentShape("LINE");

@@ -13,14 +13,14 @@
         android:text="Туманость" />
 
     <Switch
-        android:id="@+id/switch_fog_dialog_online"
+        android:id="@+id/switch_fog_dialog_offline"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_weight="1"
-        android:checked="false"/>
+        android:checked="false" />
 
     <Button
-        android:id="@+id/button_confirm_fog_dialog_online"
+        android:id="@+id/button_confirm_fog_dialog_offline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

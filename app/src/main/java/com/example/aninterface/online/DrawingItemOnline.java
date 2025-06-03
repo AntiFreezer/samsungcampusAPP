@@ -1,41 +1,52 @@
 package com.example.aninterface.online;
 
-
-import android.graphics.Path;
+import com.google.gson.annotations.SerializedName;
 
 public class DrawingItemOnline {
-    private boolean isPath;
-    private String type;
-    private int color;
-    private int width;
-    private boolean fog;
-    private Path path;
-    private float x;
-    private float y;
-    public DrawingItemOnline(float x, float y, String type, int color, int width, boolean fog) {
-        this.isPath = false;
-        this.x = x;
-        this.y = y;
+
+    @SerializedName("type")
+    private final String type;
+
+    @SerializedName("color")
+    private final int color;
+
+    @SerializedName("width")
+    private final int width;
+
+    @SerializedName("fog")
+    private final boolean fog;
+
+    @SerializedName("lx")
+    private final float lx;
+
+    @SerializedName("ly")
+    private final float ly;
+
+    @SerializedName("mx")
+    private final float mx;
+
+    @SerializedName("my")
+    private final float my;
+
+    public DrawingItemOnline(int color, boolean fog, String type, int width, float mx, float my, float lx, float ly){
         this.color = color;
-        this.width = width;
         this.fog = fog;
         this.type = type;
-    }
-
-    public DrawingItemOnline(Path path, int color, int width, boolean fog) {
-        this.isPath = true;
-        this.path = path;
-        this.color = color;
         this.width = width;
-        this.fog = fog;
+        this.mx = mx;
+        this.my = my;
+        this.lx = lx;
+        this.ly = ly;
     }
 
-    public boolean isPath() { return isPath; }
+    //GETTERS
+    public float getMx() {return mx;}
+    public float getMy() {return my;}
+    public float getLx() {return lx;}
+    public float getLy() {return ly;}
+
     public String getType() { return type; }
     public int getColor() { return color; }
     public int getWidth() { return width; }
     public boolean hasFog() { return fog; }
-    public Path getPath() { return path; }
-    public float getX() { return x; }
-    public float getY() { return y; }
 }

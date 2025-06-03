@@ -6,16 +6,16 @@ import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Xfermode;
 import android.view.SurfaceHolder;
+import android.widget.Toast;
 
-import com.example.aninterface.offline.PointsOffline;
+import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DrawingThreadOnline extends Thread{
     //VARIABLES
@@ -26,8 +26,6 @@ public class DrawingThreadOnline extends Thread{
     private int currentWidth;
     private boolean currentFog;
     private final SurfaceHolder surfaceHolder;
-    private float x;
-    private float y;
     private final PointsOnline points;
 
     public DrawingThreadOnline(SurfaceHolder surfaceHolder, PointsOnline points){
@@ -38,12 +36,14 @@ public class DrawingThreadOnline extends Thread{
 
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
+        paint.setPathEffect(new CornerPathEffect(1));
+        paint.setAntiAlias(true);
+        paint.setDither(true);
         currentColor = Color.RED;
         currentShape = "LINE";
         currentFog = false;
         currentWidth = 50;
-        x = 0;
-        y = 0;
+
 
     }
 
@@ -87,41 +87,73 @@ public class DrawingThreadOnline extends Thread{
             if (canvas != null) {
                 try {
                     synchronized (points) {
+                        synchronized (this) {
+                            ApiService apiService = ApiClient.getApiService();
+                            Call<List<DrawingItemOnline>> call = apiService.getDataFromServer();
+
+                            call.enqueue(new Callback<>() {
+                                @Override
+                                public void onResponse(@NonNull Call<List<DrawingItemOnline>> call, @NonNull Response<List<DrawingItemOnline>> response) {
+                                    if (response.isSuccessful()) {
+                                        List<DrawingItemOnline> drawings = response.body();
+                                        if (drawings != null && !drawings.isEmpty()) {
+                                            DrawingItemOnline drawing = drawings.get(drawings.size() - 1);
+                                            points.add(
+                                                    drawing.getColor(), drawing.hasFog(),
+                                                    drawing.getType(), drawing.getWidth(),
+                                                    drawing.getMx(), drawing.getMy(),
+                                                    drawing.getLx(), drawing.getLy()
+                                            );
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(@NonNull Call<List<DrawingItemOnline>> call, @NonNull Throwable t) {
+                                    System.out.println("=== Ошибка сети при получении ===");
+                                    System.out.println("Сообщение: " + t.getMessage());
+                                    System.out.println("Причина: " + t.getCause());
+                                    //Toast.makeText(DrawingThreadOnline.this.getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    System.err.println(t.getMessage());
+                                }
+                            });
+                        }
+
                         // Get all the items
                         List<DrawingItemOnline> allItems = points.getAllItems();
-                        paint.setPathEffect(new CornerPathEffect(1));
 
                         for (DrawingItemOnline item : allItems) {
+                            float mX = item.getMx();
+                            float mY = item.getMy();
+                            float lX = item.getLx();
+                            float lY = item.getLy();
+                            float half = item.getWidth() / 2f;
+                            paint.setColor(item.getColor());
+                            paint.setStrokeWidth(item.getWidth());
+                            paint.setMaskFilter(item.hasFog() ?
+                                    new BlurMaskFilter(10, BlurMaskFilter.Blur.NORMAL) : null);
 
-                            if (item.isPath()) {
-                                // Paths(Lines and Erasers)
-                                paint.setColor(item.getColor());
-                                paint.setStrokeWidth(item.getWidth());
-                                paint.setMaskFilter(item.hasFog() ?
-                                        new BlurMaskFilter(10, BlurMaskFilter.Blur.NORMAL) : null);
-
-
-
-                                canvas.drawPath(item.getPath(), paint);
-                            } else {
-                                // Shapes(Circles and Squares)
-                                paint.setColor(item.getColor());
-                                paint.setStrokeWidth(item.getWidth());
-                                paint.setMaskFilter(item.hasFog() ?
-                                        new BlurMaskFilter(10, BlurMaskFilter.Blur.NORMAL) : null);
-
-                                float x = item.getX();
-                                float y = item.getY();
-                                switch (item.getType()) {
-                                    case "SQUARE":
-                                        float half = item.getWidth() / 2f;
-                                        canvas.drawRect(x - half, y - half,
-                                                x + half, y + half, paint);
-                                        break;
-                                    case "CIRCLE":
-                                        canvas.drawCircle(x, y, item.getWidth() / 2f, paint);
-                                        break;
-                                }
+                            switch (item.getType()) {
+                                case "SQUARE":
+                                    canvas.drawRect(
+                                            mX - half, mY - half,
+                                            mX + half, mY + half,
+                                            paint
+                                    );
+                                    break;
+                                case "CIRCLE":
+                                    canvas.drawCircle(
+                                            mX, mY, half,
+                                            paint
+                                    );
+                                    break;
+                                case "LINE":
+                                case "ERASER":
+                                    Path path = new Path();
+                                    path.moveTo(mX, mY);
+                                    path.lineTo(lX, lY);
+                                    canvas.drawPath(path, paint);
+                                    break;
                             }
                         }
                     }

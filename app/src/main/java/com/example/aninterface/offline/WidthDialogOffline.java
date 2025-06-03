@@ -13,8 +13,8 @@ public class WidthDialogOffline extends Dialog {
 
         setContentView(R.layout.width_dialog_offline);
 
-        Button buttonConfirm = findViewById(R.id.button_confirm_width_dialog_online);
-        SeekBar seekBar = findViewById(R.id.seekBar_width_dialog_online);
+        Button buttonConfirm = findViewById(R.id.button_confirm_width_dialog_offline);
+        SeekBar seekBar = findViewById(R.id.seekBar_width_dialog_offline);
 
         buttonConfirm.setOnClickListener(view -> {
             drawingOffline.getDrawingThread().setCurrentWidth(seekBar.getProgress());

@@ -13,7 +13,7 @@
         android:id="@+id/seekBar_width_dialog_online"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:min="30"
+        android:min="10"
         android:max="150"
         android:progress="10" />
 
